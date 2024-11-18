@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sipariş Onayı</title>
+</head>
+<body>
+    <h1>Sipariş Onayı</h1>
+    <ul>
+        {% for item in cart_items %}
+        <li>{{ item.name }} - {{ item.size }} - ${{ item.price }}</li>
+        {% endfor %}
+    </ul>
+    <p>Toplam Fiyat: ${{ total_price }}</p>
+    <form action="{{ url_for('confirm_order') }}" method="post">
+        <button type="submit">Siparişi Onayla</button>
+    </form>
+</body>
+</html>

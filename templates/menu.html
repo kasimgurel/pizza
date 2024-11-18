@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Menüsü</title>
+</head>
+<body>
+    <h1>Pizza Menüsü</h1>
+    <form action="{{ url_for('add_to_cart') }}" method="post">
+        {% for pizza in pizzas %}
+        <div>
+            <h3>{{ pizza.name }}</h3>
+            <p>Orta: ${{ pizza.price }}</p>
+            <p>Büyük: ${{ pizza.price + 2 }}</p>
+            <select name="size">
+                <option value="medium">Orta</option>
+                <option value="large">Büyük</option>
+            </select>
+            <input type="hidden" name="pizza_name" value="{{ pizza.name }}">
+            <button type="submit">Sepete Ekle</button>
+        </div>
+        {% endfor %}
+    </form>
+    <a href="{{ url_for('cart') }}">Sepete Git</a>
+</body>
+</html>
